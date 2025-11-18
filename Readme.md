@@ -23,5 +23,5 @@ The Main Functions are
 - Selenium
 
 
-## Developed by Sydney Wesonga Walusala
+## Developed by Sydney  Walusala Wesonga
 
