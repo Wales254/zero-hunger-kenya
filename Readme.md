@@ -21,7 +21,10 @@ The Main Functions are
 - Sonarqube
 - Git & Github
 - Selenium
+LIVE AT:
+CLIENT:
+SERVER:https://zero-hunger-kenya.onrender.com
 
+## Developed by Sydney Wesonga Walusala
 
-## Developed by Sydney  Walusala Wesonga
 
