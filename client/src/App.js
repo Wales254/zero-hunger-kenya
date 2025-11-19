@@ -10,7 +10,7 @@ import Signup from './Pages/Landing Pages/SignUpPage'
 import VolunteerDeliveryAccept from './Pages/Volunteer/VolunteerDeliveryAccept';
 import VolunteerMgmt from './Pages/Volunteer/VolunteerMgmt';
 import VolunteerHome from './Pages/Volunteer/VolunteerHomePage';
-import FoodAidRequest from './Pages/Organization/FoodAidRequestPage.js';
+import FoodAidRequest from './Pages/Organization/FoodAidRequestPage';
 import OrganizationMgmt from './Pages/Organization/OrganizationMgmtPage';
 import OrganizationHome from './Pages/Organization/OrganizationHomePage';
 import DonorAcceptRequest from './Pages/Donor/DonorAcceptRequestPage';
