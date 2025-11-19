@@ -21,10 +21,13 @@ The Main Functions are
 - Sonarqube
 - Git & Github
 - Selenium
+
+
 LIVE AT:
 CLIENT:https://zero-hunger-kenya-lzq22jfz0-wales254s-projects.vercel.app/
 SERVER:https://zero-hunger-kenya.onrender.com
 
 ## Developed by Sydney Wesonga Walusala
+
 
 
