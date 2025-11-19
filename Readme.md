@@ -22,7 +22,7 @@ The Main Functions are
 - Git & Github
 - Selenium
 LIVE AT:
-CLIENT:
+CLIENT:https://zero-hunger-kenya-lzq22jfz0-wales254s-projects.vercel.app/
 SERVER:https://zero-hunger-kenya.onrender.com
 
 ## Developed by Sydney Wesonga Walusala
