@@ -1,300 +1,233 @@
-import { useEffect, useState } from 'react';
-import axios from 'axios';
+import { useEffect, useState } from "react";
+import axios from "axios";
 
-function AdminAccept () {
+function AdminAccept() {
+  const [unreOrgs, setUnregOrgs] = useState([]);
+  const [adminJobs, setAdminJobs] = useState([]);
 
+  const [formData, setFormData] = useState({
+    _id: null,
+    adminOrganizationName: "",
+    adminRegNo: "",
+    adminEmail: "",
+    adminRole: "ORG",
+    adminPassword: "",
+  });
 
-//Get All Unreigsted Organizations from DB and Display them
-    //#1 - Create a function to fetch Unreigsted Organizations
-    //#2 - Set the Unreigsted Organizations into a State
-    //#3 - Create a UseEffect to Update Page everytime Refreshed
-    //#4 - Create the Container for Unreigsted Organizations
-
-
-//States to Store Data
-const [unreOrgs, setUnregOrgs] = useState([]);
-const [adminJobs,setAdminJobs] = useState([]);
-const[unregOrgsAccept,setUnregOrgsAccept] = useState({
-_id:null,
-adminOrganizationName:"",
-adminRegNo:"",
-adminEmail:"",
-adminRole:"",
-adminPassword:"",
-adminOrgOrganizationName:"",
-adminOrgRegNo:"",
-adminOrgEmail:"",
-adminOrgRole:"",
-adminOrgPassword:""
-}
-);
-
-//useEffect
-useEffect(() => {
+  // LOAD DATA
+  useEffect(() => {
     fetchUnregOrgs();
-}, []);
+    fetchAdminJobs();
+  }, []);
 
-useEffect(() => {
-  console.log(unregOrgsAccept);
-}, [unregOrgsAccept]);
-
- //Function to Fetch Delivery Requests
-const fetchUnregOrgs = async () =>{
-  
-    //Fetch Delivery Requests
+  // FETCH UNREGISTERED ORGS
+  const fetchUnregOrgs = async () => {
     try {
-      const response = await axios.get("http://localhost:4000/adminOrg/accepts/");
-
-      //Set to State
-      if (response) {
-        setUnregOrgs(response.data);
-        
-      }
+      const res = await axios.get(
+        "http://localhost:4000/adminOrg/accepts/"
+      );
+      setUnregOrgs(res.data);
     } catch (error) {
-      
+      console.error(error);
     }
-   
   };
 
-
-//
-
-//UseEffect
-useEffect(() =>{
-  fetchAdminJobs();
-},[]);
-
-// Function to fetch Admin Jobs of a Single Volunteer
-const fetchAdminJobs = async () => {
-
-  //Fetch Delivery Requests
-  try {
-    const response = await axios.get(`http://localhost:4000/admin/approves/`);
-  // const response = await axios.get(`http://localhost:4000/admin/approves/${adminId}`);
-
-  //Set to State
-    
-    setAdminJobs(response.data);
-  } catch (error) {
-    
-  }
-  
-}
-
-//
-
-
-//Toggle Accept Delivery
-const toggleAcceptUnregOrgs = async (unreOrgs) =>{
-  const adminOrg = {
-    _id:unreOrgs._id,
-    adminOrganizationName:unreOrgs.adminOrgOrganizationName,
-    adminRegNo:unreOrgs.adminOrgRegNo,
-    adminEmail:unreOrgs.adminOrgEmail,
-    adminRole:"ORG",
-    adminPassword:unreOrgs.adminOrgPassword
-  }
-
-    //Send the create request
+  // FETCH APPROVED ORGS
+  const fetchAdminJobs = async () => {
     try {
-      const response = await axios.post("http://localhost:4000/admin/approves/",adminOrg);
-      console.log(response); 
+      const res = await axios.get(
+        "http://localhost:4000/admin/approves/"
+      );
+      setAdminJobs(res.data);
     } catch (error) {
-      console.log(error,"errors");
+      console.error(error);
     }
-   
+  };
 
-    //Delete Related Donor Record
+  // ACCEPT ORG
+  const toggleAcceptUnregOrgs = async (org) => {
     try {
-      const deleteResponse = await axios.delete(`http://localhost:4000/adminOrg/accepts/${unreOrgs._id}`);
-      console.log(deleteResponse);
-      // window.location.reload();
+      const adminOrg = {
+        adminOrganizationName: org.adminOrgOrganizationName,
+        adminRegNo: org.adminOrgRegNo,
+        adminEmail: org.adminOrgEmail,
+        adminRole: "ORG",
+        adminPassword: org.adminOrgPassword,
+      };
+
+      await axios.post(
+        "http://localhost:4000/admin/approves/",
+        adminOrg
+      );
+
+      await axios.delete(
+        `http://localhost:4000/adminOrg/accepts/${org._id}`
+      );
+
+      fetchUnregOrgs();
+      fetchAdminJobs();
     } catch (error) {
-      
+      console.error(error);
     }
-   
-}
+  };
 
-//Toggle Accept Delivery
-const toggleRejectUnregOrgs = async (unreOrgs) =>{
-    const deleteResponse = await axios.delete(`http://localhost:4000/adminOrg/accepts/${unreOrgs._id}`);
-    
-    window.location.reload();
-}
+  // REJECT ORG
+  const toggleRejectUnregOrgs = async (org) => {
+    try {
+      await axios.delete(
+        `http://localhost:4000/adminOrg/accepts/${org._id}`
+      );
 
-const toggleDeclineAdmin = async (adminJob) =>{
-  const deleteResponse = await axios.delete(`http://localhost:4000/admin/approves/${adminJob._id}`);
-    
-  window.location.reload();
-}
+      fetchUnregOrgs();
+    } catch (error) {
+      console.error(error);
+    }
+  };
 
-const toggleUpdateAdmin = (unreOrgs) =>{
-  setUnregOrgsAccept({
-    _id:unreOrgs._id,
-    adminOrganizationName:unreOrgs.adminOrganizationName,
-    adminRegNo:unreOrgs.adminRegNo,
-    adminEmail:unreOrgs.adminEmail,
-    adminRole:unreOrgs.adminRole,
-    adminPassword:unreOrgs.adminPassword
-  });
-}
+  // DELETE APPROVED ORG
+  const toggleDeclineAdmin = async (job) => {
+    try {
+      await axios.delete(
+        `http://localhost:4000/admin/approves/${job._id}`
+      );
 
-//Handle Update Field Change
-const handleAddFieldChange = (e) =>{
-  const {value,name} = e.target
+      fetchAdminJobs();
+    } catch (error) {
+      console.error(error);
+    }
+  };
 
-  setUnregOrgsAccept({
-    ...unregOrgsAccept,
-    [name]:value,
-  })
-  console.log(unregOrgsAccept);
-}
+  // EDIT LOAD
+  const toggleUpdateAdmin = (org) => {
+    setFormData({
+      _id: org._id,
+      adminOrganizationName: org.adminOrganizationName,
+      adminRegNo: org.adminRegNo,
+      adminEmail: org.adminEmail,
+      adminRole: org.adminRole,
+      adminPassword: org.adminPassword,
+    });
+  };
 
-// Create Delivery Job
-const createAdminOrgJob = async (e) => {
-  e.preventDefault();
+  // INPUT CHANGE
+  const handleChange = (e) => {
+    const { name, value } = e.target;
 
-  if(unregOrgsAccept._id) {
-    const adminOrgJobDetails = {
-      _id: unregOrgsAccept._id,
-      adminOrganizationName:unregOrgsAccept.adminOrganizationName,
-      adminRegNo:unregOrgsAccept.adminRegNo,
-      adminEmail:unregOrgsAccept.adminEmail,
-      adminRole:unregOrgsAccept.adminRole,
-      adminPassword:unregOrgsAccept.adminPassword
-    };
-try {
-  const response = await axios.patch(`http://localhost:4000/admin/approves/${unregOrgsAccept._id}`,adminOrgJobDetails);
-  
-} catch (error) {
-  
-}
-  } else {
-    const adminOrgJobDetails = {
-      adminOrgOrganizationName:unregOrgsAccept.adminOrganizationName,
-      adminOrgRegNo:unregOrgsAccept.adminRegNo,
-      adminOrgEmail:unregOrgsAccept.adminEmail,
-      adminOrgRole:"ORG",
-      adminOrgPassword:unregOrgsAccept.adminPassword
-    };
-try {
-  const response = await axios.post("http://localhost:4000/adminOrg/accepts/",adminOrgJobDetails);
-  
-} catch (error) {
-  
-}
-  }
+    setFormData((prev) => ({
+      ...prev,
+      [name]: value,
+    }));
+  };
 
-  //Refresh Delivery Requests List
-  await fetchUnregOrgs();
+  // SUBMIT FORM
+  const handleSubmit = async (e) => {
+    e.preventDefault();
 
-  await fetchAdminJobs();
+    try {
+      if (formData._id) {
+        await axios.patch(
+          `http://localhost:4000/admin/approves/${formData._id}`,
+          formData
+        );
+      } else {
+        await axios.post(
+          "http://localhost:4000/adminOrg/accepts/",
+          formData
+        );
+      }
 
-  //Clear Details From State
-  setUnregOrgsAccept({
-    _id:null,
-    adminOrganizationName:"",
-    adminRegNo:"",
-    adminEmail:"",
-    adminRole:"",
-    adminPassword:"",
-    adminOrgOrganizationName:"",
-    adminOrgRegNo:"",
-    adminOrgEmail:"",
-    adminOrgRole:"",
-    adminOrgPassword:""
-  });
+      fetchUnregOrgs();
+      fetchAdminJobs();
 
-}
+      setFormData({
+        _id: null,
+        adminOrganizationName: "",
+        adminRegNo: "",
+        adminEmail: "",
+        adminRole: "ORG",
+        adminPassword: "",
+      });
+    } catch (error) {
+      console.error(error);
+    }
+  };
 
   return (
     <div className="home">
-        <div className="workouts">
-        <h1>Unreigsted Organizations</h1>
-          {unreOrgs && unreOrgs.map(unreOrg => {
-            return(
-            <div className="workout-details" key={unreOrg._id}>
-                
-                <h2><strong></strong>{unreOrg.adminOrgOrganizationName}</h2>
-                <p><strong>Reg No : </strong>{unreOrg.adminOrgRegNo}</p>
-                <p><strong>Email</strong>{unreOrg.adminOrgEmail}</p>
-                <p><strong>Role :</strong>{unreOrg.adminOrgRole}</p>
-                <span>
-                    
-                    <div><button  onClick={async() => await toggleAcceptUnregOrgs(unreOrg)}>Accept</button></div>
-                    <div><button onClick={async() =>await toggleRejectUnregOrgs(unreOrg)}>Reject</button></div>
-                    
-                </span>
-            </div>
-            );
-          })}
+      <div className="workouts">
+        <h1>Unregistered Organizations</h1>
 
-        <h1>Registed Organizations</h1>    
-          {adminJobs && adminJobs.map(adminJob => (
-            <div className="workout-details" key={adminJob._id}>
+        {unreOrgs.map((org) => (
+          <div className="workout-details" key={org._id}>
+            <h3>{org.adminOrgOrganizationName}</h3>
+            <p>{org.adminOrgRegNo}</p>
+            <p>{org.adminOrgEmail}</p>
 
-                <h2><strong></strong>{adminJob.adminOrganizationName}</h2>
-                
-                <p><strong>Reg No : </strong>{adminJob.adminRegNo}</p>
-                <p><strong>Email : </strong>{adminJob.adminEmail}</p>
-                <p><strong>Role :</strong>{adminJob.adminRole}</p>
+            <button onClick={() => toggleAcceptUnregOrgs(org)}>
+              Accept
+            </button>
 
-                <span>
-                    <div><button onClick={async () =>await toggleDeclineAdmin(adminJob)}>Decline</button></div>
-                    <div><button onClick={() =>toggleUpdateAdmin(adminJob)}>Edit</button></div>
-                    {/* onClick={() =>toggleAcceptAdmin(adninRequest)} */}
-                </span>
-            </div>
-          ))}
+            <button onClick={() => toggleRejectUnregOrgs(org)}>
+              Reject
+            </button>
+          </div>
+        ))}
 
+        <h1>Registered Organizations</h1>
 
-        
-        </div>
-        
+        {adminJobs.map((job) => (
+          <div className="workout-details" key={job._id}>
+            <h3>{job.adminOrganizationName}</h3>
+            <p>{job.adminRegNo}</p>
+            <p>{job.adminEmail}</p>
 
-          <form className="create" onSubmit={createAdminOrgJob}> 
-            <h1>Add/Edit Organization</h1>
-            <h4>{unregOrgsAccept.requestTitle} </h4>
-            
-            <label>Organization Name:</label>
-            <input 
-              type="text" 
-              name="adminOrganizationName"
-              onChange={handleAddFieldChange}
-              value={unregOrgsAccept.adminOrganizationName}
-            />
+            <button onClick={() => toggleDeclineAdmin(job)}>
+              Delete
+            </button>
 
-            <label>Registration No:</label>
-            <input 
-              type="text" 
-              name="adminRegNo"
-              onChange={handleAddFieldChange}
-              value={unregOrgsAccept.adminRegNo}
-            />
+            <button onClick={() => toggleUpdateAdmin(job)}>
+              Edit
+            </button>
+          </div>
+        ))}
+      </div>
 
-            <label>Email Address:</label>
-            <input 
-              type="text" 
-              name="adminEmail"
-              onChange={handleAddFieldChange}
-              value={unregOrgsAccept.adminEmail}
-            />
+      {/* FORM */}
+      <form className="create" onSubmit={handleSubmit}>
+        <h2>Add / Edit Organization</h2>
 
-            <label>Password:</label>
-            <input 
-              type="text" 
-              name="adminPassword"
-              onChange={handleAddFieldChange}
-              value={unregOrgsAccept.adminPassword}
-            />
+        <input
+          name="adminOrganizationName"
+          value={formData.adminOrganizationName}
+          onChange={handleChange}
+          placeholder="Organization Name"
+        />
 
-      <button>Add Organization</button>
-      <button>Update Organization</button>
-    </form>
-      
+        <input
+          name="adminRegNo"
+          value={formData.adminRegNo}
+          onChange={handleChange}
+          placeholder="Reg No"
+        />
+
+        <input
+          name="adminEmail"
+          value={formData.adminEmail}
+          onChange={handleChange}
+          placeholder="Email"
+        />
+
+        <input
+          name="adminPassword"
+          value={formData.adminPassword}
+          onChange={handleChange}
+          placeholder="Password"
+        />
+
+        <button type="submit">Save</button>
+      </form>
     </div>
-        )
-
+  );
 }
 
 export default AdminAccept;

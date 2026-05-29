@@ -1,0 +1,168 @@
+/* Main Page */
+.signup-page {
+  min-height: 100vh;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  background:
+    linear-gradient(rgba(15,23,42,0.85),
+    rgba(15,23,42,0.95)),
+    url("https://images.unsplash.com/photo-1488521787991-ed7bbaae773c");
+
+  background-size: cover;
+  background-position: center;
+
+  padding: 40px 20px;
+}
+
+/* Container */
+.signup-container {
+  width: 100%;
+  max-width: 1200px;
+
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+
+  background: rgba(255,255,255,0.08);
+
+  backdrop-filter: blur(15px);
+
+  border-radius: 24px;
+  overflow: hidden;
+
+  box-shadow: 0 8px 30px rgba(0,0,0,0.3);
+}
+
+/* Left Info */
+.signup-info {
+  padding: 60px;
+  color: white;
+
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.signup-info h1 {
+  font-size: 3rem;
+  margin-bottom: 20px;
+}
+
+.signup-info p {
+  color: #cbd5e1;
+  line-height: 1.8;
+  margin-bottom: 40px;
+}
+
+/* Role Buttons */
+.role-buttons {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.role-btn {
+  padding: 18px;
+
+  border: none;
+  border-radius: 14px;
+
+  background: rgba(255,255,255,0.12);
+  color: white;
+
+  font-size: 1rem;
+  cursor: pointer;
+
+  transition: 0.3s ease;
+}
+
+.role-btn:hover {
+  background: rgba(255,255,255,0.2);
+}
+
+.role-btn.active {
+  background: #22c55e;
+}
+
+/* Form Section */
+.signup-form-container {
+  background: white;
+  padding: 60px;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+/* Form */
+.signup-form {
+  width: 100%;
+}
+
+.signup-form h2 {
+  margin-bottom: 30px;
+  color: #0f172a;
+}
+
+.signup-form input,
+.signup-form select {
+  width: 100%;
+
+  padding: 14px;
+  margin-bottom: 20px;
+
+  border: 1px solid #dbeafe;
+  border-radius: 12px;
+
+  font-size: 1rem;
+}
+
+.signup-form input:focus,
+.signup-form select:focus {
+  border-color: #22c55e;
+  outline: none;
+}
+
+/* Button */
+.signup-form button {
+  width: 100%;
+
+  padding: 15px;
+
+  border: none;
+  border-radius: 12px;
+
+  background: #22c55e;
+  color: white;
+
+  font-size: 1rem;
+  font-weight: 600;
+
+  cursor: pointer;
+  transition: 0.3s ease;
+}
+
+.signup-form button:hover {
+  background: #16a34a;
+  transform: translateY(-3px);
+}
+
+/* Responsive */
+@media (max-width: 900px) {
+
+  .signup-container {
+    grid-template-columns: 1fr;
+  }
+
+  .signup-info,
+  .signup-form-container {
+    padding: 40px 30px;
+  }
+
+  .signup-info h1 {
+    font-size: 2.2rem;
+  }
+
+}

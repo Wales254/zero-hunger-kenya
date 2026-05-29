@@ -1,0 +1,92 @@
+/* Page Background */
+.food-request-page {
+  min-height: 100vh;
+  background: #f8fafc;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 40px;
+}
+
+/* Container */
+.request-container {
+  width: 100%;
+  max-width: 700px;
+
+  background: white;
+  padding: 40px;
+
+  border-radius: 18px;
+
+  box-shadow: 0 10px 30px rgba(0,0,0,0.08);
+}
+
+/* Title */
+.request-container h1 {
+  margin-bottom: 10px;
+  color: #0f172a;
+}
+
+.request-container p {
+  margin-bottom: 25px;
+  color: #64748b;
+}
+
+/* Form */
+.request-form {
+  display: flex;
+  flex-direction: column;
+}
+
+/* Labels */
+.request-form label {
+  margin-top: 15px;
+  margin-bottom: 5px;
+  font-weight: 500;
+  color: #334155;
+}
+
+/* Inputs */
+.request-form input,
+.request-form textarea,
+.request-form select {
+  padding: 12px;
+
+  border: 1px solid #e2e8f0;
+  border-radius: 10px;
+
+  font-size: 1rem;
+
+  outline: none;
+  transition: 0.3s;
+}
+
+.request-form input:focus,
+.request-form textarea:focus,
+.request-form select:focus {
+  border-color: #22c55e;
+  box-shadow: 0 0 0 3px rgba(34,197,94,0.2);
+}
+
+/* Button */
+.request-form button {
+  margin-top: 25px;
+  padding: 14px;
+
+  border: none;
+  border-radius: 12px;
+
+  background: #22c55e;
+  color: white;
+
+  font-size: 1rem;
+  font-weight: 600;
+
+  cursor: pointer;
+  transition: 0.3s ease;
+}
+
+.request-form button:hover {
+  background: #16a34a;
+  transform: translateY(-3px);
+}

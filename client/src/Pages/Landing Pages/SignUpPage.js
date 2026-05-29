@@ -1,122 +1,173 @@
-import React, { useState } from 'react';
+import React, { useState } from "react";
+import "./SignUpPage.css";
 
 const SignUp = () => {
-  const [isOrgFormVisible, setIsOrgFormVisible] = useState(false);
-  const [isVolFormVisible, setIsVolFormVisible] = useState(false);
-
-  const toggleOrgForm = () => {
-    setIsOrgFormVisible(true);
-    setIsVolFormVisible(false);
-  };
-
-  const toggleVolForm = () => {
-    setIsOrgFormVisible(false);
-    setIsVolFormVisible(true);
-  };
+  const [activeForm, setActiveForm] = useState("");
 
   const handleOrgSubmit = (event) => {
     event.preventDefault();
-    // Handle organization form submission
-    const orgName = event.target.orgName.value;
-    const registrationNo = event.target.registrationNo.value;
-    const email = event.target.email.value;
-    const password = event.target.password.value;
 
-    // Save the organization data to the database
     const orgData = {
-      orgName,
-      registrationNo,
-      email,
-      password,
-      role: 'org',
+      orgName: event.target.orgName.value,
+      registrationNo: event.target.registrationNo.value,
+      email: event.target.email.value,
+      password: event.target.password.value,
+      role: "organization",
     };
 
-    // Perform API call or any necessary action to save the data
-    console.log('Organization data:', orgData);
+    console.log("Organization Data:", orgData);
 
-    // Reset the form
     event.target.reset();
   };
 
   const handleVolSubmit = (event) => {
     event.preventDefault();
-    // Handle volunteer/donor form submission
-    const firstName = event.target.firstName.value;
-    const lastName = event.target.lastName.value;
-    const email = event.target.email.value;
-    const password = event.target.password.value;
-    const role = event.target.role.value;
 
-    // Save the volunteer/donor data to the database
-    const volData = {
-      firstName,
-      lastName,
-      email,
-      password,
-      role,
+    const userData = {
+      firstName: event.target.firstName.value,
+      lastName: event.target.lastName.value,
+      email: event.target.email.value,
+      password: event.target.password.value,
+      role: event.target.role.value,
     };
 
-    // Perform API call or any necessary action to save the data
-    console.log('Volunteer/Donor data:', volData);
+    console.log("Volunteer/Donor Data:", userData);
 
-    // Reset the form
     event.target.reset();
   };
 
   return (
-    <div>
-      <h2 id="page-title">Sign Up</h2>
-      <div className="homepage home-margin">
-      <div>
-        <button className="homepagebutton" onClick={toggleOrgForm}>Sign Up for Organizations</button>
-        <button className="homepagebutton" onClick={toggleVolForm}>Sign Up for Volunteers and Donors</button>
-      </div>
+    <div className="signup-page">
 
-      {isOrgFormVisible && (
-        <form onSubmit={handleOrgSubmit}>
-          <h3>Organization Sign Up</h3>
-          <label htmlFor="orgName">Organization Name</label>
-          <input type="text" id="orgName" name="orgName" required />
+      <div className="signup-container">
 
-          <label htmlFor="registrationNo">Registration No.</label>
-          <input type="text" id="registrationNo" name="registrationNo" required />
+        {/* Left Section */}
+        <div className="signup-info">
+          <h1>Join Food Pals</h1>
 
-          <label htmlFor="email">Email Address</label>
-          <input type="email" id="email" name="email" required />
+          <p>
+            Become part of a growing movement dedicated
+            to reducing hunger and food waste worldwide.
+          </p>
 
-          <label htmlFor="password">Password</label>
-          <input type="password" id="password" name="password" required />
+          <div className="role-buttons">
 
-          <button type="submit">Sign Up</button>
-        </form>
-      )}
+            <button
+              className={`role-btn ${
+                activeForm === "organization" ? "active" : ""
+              }`}
+              onClick={() => setActiveForm("organization")}
+            >
+              🏢 Organization
+            </button>
 
-      {isVolFormVisible && (
-        <form onSubmit={handleVolSubmit}>
-          <h3>Volunteer/Donor Sign Up</h3>
-          <label htmlFor="firstName">First Name</label>
-          <input type="text" id="firstName" name="firstName" required />
+            <button
+              className={`role-btn ${
+                activeForm === "volunteer" ? "active" : ""
+              }`}
+              onClick={() => setActiveForm("volunteer")}
+            >
+              🙋 Volunteer / Donor
+            </button>
 
-          <label htmlFor="lastName">Last Name</label>
-          <input type="text" id="lastName" name="lastName" required />
-
-          <label htmlFor="email">Email Address</label>
-          <input type="email" id="email" name="email" required />
-
-          <label htmlFor="password">Password</label>
-          <input type="password" id="password" name="password" required />
-
-        <div>
-          <label htmlFor="role">Role</label>
-          <select id="role" name="role" required>
-            <option value="volunteer">Volunteer</option>
-            <option value="donor">Donor</option>
-          </select>
           </div>
-          <button type="submit">Sign Up</button>
-        </form>
-      )}
+        </div>
+
+        {/* Right Section */}
+        <div className="signup-form-container">
+
+          {/* Organization Form */}
+          {activeForm === "organization" && (
+            <form className="signup-form" onSubmit={handleOrgSubmit}>
+
+              <h2>Organization Sign Up</h2>
+
+              <input
+                type="text"
+                name="orgName"
+                placeholder="Organization Name"
+                required
+              />
+
+              <input
+                type="text"
+                name="registrationNo"
+                placeholder="Registration Number"
+                required
+              />
+
+              <input
+                type="email"
+                name="email"
+                placeholder="Email Address"
+                required
+              />
+
+              <input
+                type="password"
+                name="password"
+                placeholder="Password"
+                required
+              />
+
+              <button type="submit">
+                Create Organization Account
+              </button>
+
+            </form>
+          )}
+
+          {/* Volunteer / Donor Form */}
+          {activeForm === "volunteer" && (
+            <form className="signup-form" onSubmit={handleVolSubmit}>
+
+              <h2>Volunteer / Donor Sign Up</h2>
+
+              <input
+                type="text"
+                name="firstName"
+                placeholder="First Name"
+                required
+              />
+
+              <input
+                type="text"
+                name="lastName"
+                placeholder="Last Name"
+                required
+              />
+
+              <input
+                type="email"
+                name="email"
+                placeholder="Email Address"
+                required
+              />
+
+              <input
+                type="password"
+                name="password"
+                placeholder="Password"
+                required
+              />
+
+              <select name="role" required>
+                <option value="">Select Role</option>
+                <option value="volunteer">Volunteer</option>
+                <option value="donor">Donor</option>
+              </select>
+
+              <button type="submit">
+                Create Account
+              </button>
+
+            </form>
+          )}
+
+        </div>
+
       </div>
+
     </div>
   );
 };

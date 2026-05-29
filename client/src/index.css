@@ -1,236 +1,276 @@
-/* body {
-  margin: 0;
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
-    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
-    sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-}
+/* Google Font */
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap');
 
-code {
-  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
-    monospace;
-} *//* google font */
-@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;800&family=VT323&display=swap');
-
-/* layout */
+/* Root Colors */
 :root {
-  --primary: #1aac83;
-  --error: #e7195a;
+  --primary: #22c55e;
+  --primary-dark: #16a34a;
+  --secondary: #0f172a;
+  --light-bg: #f8fafc;
+  --card-bg: #ffffff;
+  --text-dark: #1e293b;
+  --text-light: #64748b;
+  --error: #ef4444;
+  --shadow: 0 8px 20px rgba(0,0,0,0.08);
 }
-body {
-  background: #f1f1f1;
+
+/* Global Reset */
+* {
   margin: 0;
-  font-family: "Poppins";
-}
-header {
-  background: #fff;
+  padding: 0;
+  box-sizing: border-box;
 }
 
-header .container {
-  max-width: 1400px;
-  margin: 0 auto;
-  padding: 10px 20px;
-  display: grid;
-  grid-template-columns: 5fr 1fr 1fr 1fr;
-  align-items: center;
-  justify-items: start;
+/* Body */
+body {
+  font-family: "Poppins", sans-serif;
+  background: var(--light-bg);
+  color: var(--text-dark);
+  overflow-x: hidden;
 }
 
-header a {
-  color: #333;
+/* Links */
+a {
   text-decoration: none;
-}
-.pages{
-  max-width: 1400px;
-  padding: 20px;
-  margin: 0 auto;
+  color: inherit;
 }
 
-/* homepage */
+/* Layout */
+.pages {
+  width: 100%;
+  min-height: 100vh;
+}
 
+/* Container Utility */
+.container {
+  width: 90%;
+  max-width: 1300px;
+  margin: auto;
+}
 
-.home {
-  display: grid;
-  grid-template-columns: 3fr 1fr;
-  gap: 100px;
+/* =========================================
+   HERO / LANDING PAGE
+========================================= */
+
+#page-title {
+  text-align: center;
+  font-size: 4rem;
+  font-weight: 800;
+  margin-top: 60px;
+  color: var(--secondary);
 }
 
 .homepage {
   display: flex;
-  flex-direction: column;
-  align-items: center;
   justify-content: center;
+  align-items: center;
+  gap: 25px;
+  margin-top: 50px;
+  flex-wrap: wrap;
 }
 
-.home-margin{
-  margin: 30px;
+.homepagebutton {
+  background: var(--primary);
+  border: none;
+  color: white;
+  padding: 16px 35px;
+  border-radius: 12px;
+  font-size: 1rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: 0.3s ease;
+  min-width: 220px;
+  box-shadow: var(--shadow);
 }
+
+.homepagebutton:hover {
+  background: var(--primary-dark);
+  transform: translateY(-4px);
+}
+
+/* =========================================
+   CARDS
+========================================= */
+
 .workout-details {
-  background: #fff;
-  border-radius: 4px;
+  background: var(--card-bg);
+  border-radius: 16px;
   margin: 20px auto;
-  padding: 20px;
+  padding: 25px;
   position: relative;
-  box-shadow: 2px 2px 5px rgba(0,0,0,0.05);
+  box-shadow: var(--shadow);
+  transition: 0.3s ease;
 }
+
+.workout-details:hover {
+  transform: translateY(-5px);
+}
+
 .workout-details h4 {
-  margin: 0 0 10px 0;
-  font-size: 1.2em;
+  margin-bottom: 12px;
+  font-size: 1.3rem;
   color: var(--primary);
 }
+
 .workout-details p {
-  margin: 0;
-  font-size: 0.9em;
-  color: #555;
+  margin-bottom: 8px;
+  font-size: 0.95rem;
+  color: var(--text-light);
 }
+
 .workout-details span {
   position: absolute;
   top: 20px;
   right: 20px;
   cursor: pointer;
-  background: #f1f1f1;
-  padding: 6px;
+  background: #f1f5f9;
+  padding: 8px;
   border-radius: 50%;
-  color: #333;
 }
 
+/* Donation Status */
 .ongoing-donation {
-  background-color: #f0dd30;
+  border-left: 6px solid #facc15;
 }
 
-.ongoing-donation span {
-  background: #e6d64e;
+.ongoing-delivery {
+  border-left: 6px solid #22c55e;
 }
 
-.ongoing-delivery{
-  background: #7df030;
+/* =========================================
+   FORMS
+========================================= */
+
+.orgform {
+  background: white;
+  margin: 40px auto;
+  padding: 50px;
+  border-radius: 20px;
+  box-shadow: var(--shadow);
 }
 
-.ongoing-delivery span{
-  background: #85ee40;
+form .form-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 25px;
 }
 
-#page-title{
-    text-align: center;
-    margin:45px;
+form .input-box {
+  width: 100%;
 }
 
-
-/* new workout form */
-label, input {
+label {
+  font-weight: 500;
+  margin-bottom: 8px;
   display: block;
 }
 
-.orgform{
-    margin: 20px;
-    border-style: solid;
-    padding:60px 60px 60px 80px;
-    border-radius: 1%;
-    border-color: #ddd;
-}
-
-form .form-grid{
-    display: grid;
-    grid-template-columns: 2fr 2fr;
-    margin:auto;
-}
-
-form .input-box{
-    max-width: 530px;
-    
-}
-
-input {
-  padding: 10px;
-  margin-top: 10px;
+/* Inputs */
+input,
+textarea,
+select {
+  width: 100%;
+  padding: 14px;
+  margin-top: 8px;
   margin-bottom: 20px;
-  width: 100%;
-  border: 1px solid #ddd;
-  border-radius: 4px;
-  box-sizing: border-box;
+
+  border: 1px solid #dbeafe;
+  border-radius: 10px;
+
+  font-size: 1rem;
+  font-family: "Poppins";
+
+  transition: 0.3s ease;
 }
 
-form .form-text-area{
-    max-width: 1115px;
-    padding: 10px;
-    margin-top: 10px;
-    margin-bottom: 20px;
-    width: 100%;
-    border: 1px solid #ddd;
-    border-radius: 4px;
-    box-sizing: border-box;
+input:focus,
+textarea:focus,
+select:focus {
+  border-color: var(--primary);
+  outline: none;
+  box-shadow: 0 0 0 3px rgba(34,197,94,0.2);
 }
 
-form .select-div{
-  padding: 10px 10px 10px 0;
-  margin-top: 10px;
-  margin-bottom: 10px;
-  width: 100%;
-  box-sizing: border-box;
-}
-form .select-label{
-  display: inline-block;
-  margin-right: 10px;
+/* Text Area */
+form .form-text-area {
+  min-height: 140px;
+  resize: vertical;
 }
 
-form .select-group{
-  font-size: 15px;
-}
-
-
-#gmap_canvas{
-    
-    margin-top: 10px;
-    margin-bottom: 20px;
-    box-sizing: border-box;
-    
-}
-
-form .gmap_canvas{
-  min-width: 1115px;
-  min-height:300px;
-}
-
+/* Buttons */
 form button {
   background: var(--primary);
-  border: 0;
-  color: #fff;
-  padding: 10px;
-  font-family: "Poppins";
-  border-radius: 4px;
+  border: none;
+  color: white;
+  padding: 14px 30px;
+  border-radius: 10px;
   cursor: pointer;
+  font-size: 1rem;
+  font-weight: 600;
+  transition: 0.3s ease;
 }
 
-
-#role {
-  width:100%;
-  margin-bottom: 10px;
-  margin-bottom: 20px;
+form button:hover {
+  background: var(--primary-dark);
+  transform: translateY(-3px);
 }
 
-.homepagebutton {
-  background: var(--primary);
-  border: 0;
-  color: #fff;
-  padding: 10px;
-  font-family: "Poppins";
-  border-radius: 4px;
-  cursor: pointer;
-  margin-bottom: 20px;
-  margin-right:20px;
-  width: 300px;
+/* =========================================
+   MAP
+========================================= */
+
+#gmap_canvas {
+  margin-top: 20px;
+  border-radius: 12px;
+  overflow: hidden;
 }
+
+form .gmap_canvas {
+  width: 100%;
+  min-height: 300px;
+}
+
+/* =========================================
+   ERROR
+========================================= */
 
 div.error {
-  padding: 10px;
-  background: #ffefef;
+  padding: 14px;
+  background: #fef2f2;
   border: 1px solid var(--error);
   color: var(--error);
-  border-radius: 4px;
+  border-radius: 10px;
   margin: 20px 0;
 }
 
-.displayHidden{
+/* =========================================
+   UTILITIES
+========================================= */
+
+.displayHidden {
   display: none;
+}
+
+/* =========================================
+   RESPONSIVE
+========================================= */
+
+@media (max-width: 768px) {
+
+  #page-title {
+    font-size: 2.5rem;
+  }
+
+  .homepage {
+    flex-direction: column;
+  }
+
+  .homepagebutton {
+    width: 100%;
+  }
+
+  .orgform {
+    padding: 25px;
+  }
+
 }
