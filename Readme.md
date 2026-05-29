@@ -26,9 +26,9 @@ The Main Functions are
 LIVE AT:
 CLIENT:https://zero-hunger-kenya.vercel.app/
 
-SERVER:https://zero-hunger-kenya.onrender.com
+SERVER:https:COMING SOON!!
 
-## Developed by Sydney Wesonga Walusala
+## Developed by Sydeny Wesonga
 
 
 
