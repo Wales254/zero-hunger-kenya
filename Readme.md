@@ -24,7 +24,7 @@ The Main Functions are
 
 
 LIVE AT:
-CLIENT:https://zero-hunger-kenya-lzq22jfz0-wales254s-projects.vercel.app/
+CLIENT:https://zero-hunger-kenya.vercel.app/
 
 SERVER:https://zero-hunger-kenya.onrender.com
 
