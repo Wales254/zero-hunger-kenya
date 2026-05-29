@@ -26,7 +26,7 @@ The Main Functions are
 LIVE AT:
 CLIENT:https://zero-hunger-kenya.vercel.app/
 
-SERVER:https:COMING SOON!!
+SERVER:COMING SOON!!
 
 ## Developed by Sydeny Wesonga
 
