@@ -6,28 +6,28 @@ import Footer from "./Components/Footer";
 
 // Landing Pages
 import LandingPage from "./Pages/LandingPages/LandingPage"
-import Login from "./pages/LandingPages/LoginPage";
-import Signup from "./pages/LandingPages/SignUpPage";
+import Login from "./Pages/LandingPages/LoginPage";
+import Signup from "./Pages/LandingPages/SignUpPage";
 
 // Volunteer Pages
-import VolunteerHome from "./pages/Volunteer/VolunteerHomePage";
-import VolunteerMgmt from "./pages/Volunteer/VolunteerMgmt";
-import VolunteerDeliveryAccept from "./pages/Volunteer/VolunteerDeliveryAccept";
+import VolunteerHome from "./Pages/Volunteer/VolunteerHomePage";
+import VolunteerMgmt from "./Pages/Volunteer/VolunteerMgmt";
+import VolunteerDeliveryAccept from "./Pages/Volunteer/VolunteerDeliveryAccept";
 
 // Organization Pages
-import OrganizationHome from "./pages/Organization/OrganizationHomePage";
-import OrganizationMgmt from "./pages/Organization/OrganizationMgmtPage";
-import FoodAidRequest from "./pages/Organization/FoodAidRequestPage";
+import OrganizationHome from "./Pages/Organization/OrganizationHomePage";
+import OrganizationMgmt from "./Pages/Organization/OrganizationMgmtPage";
+import FoodAidRequest from "./Pages/Organization/FoodAidRequestPage";
 
 // Donor Pages
-import DonorHome from "./pages/Donor/DonorHomePage";
-import DonorMgmt from "./pages/Donor/DonorMgmtPage";
-import DonorAcceptRequest from "./pages/Donor/DonorAcceptRequestPage";
+import DonorHome from "./Pages/Donor/DonorHomePage";
+import DonorMgmt from "./Pages/Donor/DonorMgmtPage";
+import DonorAcceptRequest from "./Pages/Donor/DonorAcceptRequestPage";
 
 // ADMIN PAGES
 import AdminHomePage from "./Pages/Admin/AdminHomePage";
-import AdminAccept from "./pages/Admin/AdminAccept";
-import AdminManage from "./pages/Admin/AdminManage";
+import AdminAccept from "./Pages/Admin/AdminAccept";
+import AdminManage from "./Pages/Admin/AdminManage";
 
 // 404 Page
 const NotFound = () => {
