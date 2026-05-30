@@ -1,7 +1,7 @@
 import DashboardLayout from "../../Components/DashboardLayout";
 import DashboardCards from "../../Components/DashboardCards";
 import ActivityChart from "../../Components/ActivityChart";
-import "./AdminHomePage.css";
+import "./adminhomepage.css";
 
 function AdminHomePage() {
   return (
