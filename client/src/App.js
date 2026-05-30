@@ -26,7 +26,7 @@ import DonorAcceptRequest from "./Pages/Donor/DonorAcceptRequestPage";
 
 // ADMIN PAGES
 import AdminHomePage from "./Pages/Admin/AdminHomePage";
-import AdminAccept from "./Pages/Admin/adminaccept";
+import AdminAccept from "./Pages/Admin/AdminAccept";
 import AdminManage from "./Pages/Admin/AdminManage";
 
 // 404 Page
