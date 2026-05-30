@@ -1,0 +1,261 @@
+/* =========================
+   VOLUNTEER DASHBOARD UI
+========================= */
+
+:root {
+  --bg: #0f172a;
+  --panel: #1e293b;
+  --panel-2: #273449;
+  --text: #e2e8f0;
+  --muted: #94a3b8;
+  --green: #22c55e;
+  --red: #ef4444;
+  --shadow: 0 12px 30px rgba(0,0,0,0.35);
+}
+
+/* Page wrapper */
+.volunteer-dashboard {
+  display: flex;
+  min-height: 100vh;
+  background: var(--bg);
+  color: var(--text);
+}
+
+/* =========================
+   SIDEBAR
+========================= */
+
+.volunteer-sidebar {
+  width: 260px;
+  background: var(--panel);
+  padding: 25px;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.volunteer-logo {
+  font-size: 1.4rem;
+  font-weight: bold;
+  color: var(--green);
+}
+
+.volunteer-menu {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.volunteer-menu a {
+  color: var(--muted);
+  padding: 10px 12px;
+  border-radius: 10px;
+  transition: 0.3s;
+}
+
+.volunteer-menu a:hover {
+  background: var(--panel-2);
+  color: white;
+}
+
+/* =========================
+   MAIN CONTENT
+========================= */
+
+.volunteer-main {
+  flex: 1;
+  padding: 30px;
+}
+
+/* Top bar */
+.volunteer-topbar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 25px;
+}
+
+.volunteer-topbar h1 {
+  font-size: 1.8rem;
+}
+
+.volunteer-user {
+  background: var(--panel);
+  padding: 8px 12px;
+  border-radius: 10px;
+}
+
+/* =========================
+   STATS CARDS
+========================= */
+
+.volunteer-stats {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 15px;
+  margin-bottom: 25px;
+}
+
+.stat-card {
+  background: var(--panel);
+  padding: 20px;
+  border-radius: 14px;
+  box-shadow: var(--shadow);
+  transition: 0.3s;
+}
+
+.stat-card:hover {
+  transform: translateY(-5px);
+  background: var(--panel-2);
+}
+
+.stat-card h3 {
+  color: var(--muted);
+  font-size: 0.9rem;
+}
+
+.stat-card h2 {
+  margin-top: 10px;
+  color: var(--green);
+}
+
+/* =========================
+   TASK / DELIVERY CARDS
+========================= */
+
+.volunteer-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 20px;
+}
+
+.volunteer-card {
+  background: var(--panel);
+  padding: 18px;
+  border-radius: 16px;
+  box-shadow: var(--shadow);
+  transition: 0.3s;
+}
+
+.volunteer-card:hover {
+  transform: translateY(-6px);
+  background: var(--panel-2);
+}
+
+.volunteer-card h3 {
+  color: var(--green);
+  margin-bottom: 8px;
+}
+
+.volunteer-card p {
+  color: var(--muted);
+  font-size: 0.95rem;
+  margin-bottom: 6px;
+}
+
+/* Buttons */
+.volunteer-actions {
+  display: flex;
+  gap: 10px;
+  margin-top: 15px;
+}
+
+.volunteer-btn {
+  flex: 1;
+  padding: 10px;
+  border: none;
+  border-radius: 10px;
+  cursor: pointer;
+  font-weight: bold;
+  transition: 0.3s;
+}
+
+.volunteer-btn.accept {
+  background: var(--green);
+  color: white;
+}
+
+.volunteer-btn.accept:hover {
+  background: #16a34a;
+}
+
+.volunteer-btn.reject {
+  background: var(--red);
+  color: white;
+}
+
+.volunteer-btn.reject:hover {
+  background: #dc2626;
+}
+
+/* =========================
+   ACTIVITY CHART PLACEHOLDER
+========================= */
+
+.volunteer-activity {
+  margin-top: 30px;
+  background: var(--panel);
+  padding: 20px;
+  border-radius: 14px;
+}
+
+.chart-box {
+  height: 220px;
+  border-radius: 12px;
+  background: linear-gradient(135deg, #1e293b, #0f172a);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--muted);
+}
+
+/* =========================
+   MOBILE RESPONSIVE
+========================= */
+
+@media (max-width: 768px) {
+  .volunteer-dashboard {
+    flex-direction: column;
+  }
+
+  .volunteer-sidebar {
+    width: 100%;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+  }
+
+  .volunteer-menu {
+    flex-direction: row;
+    flex-wrap: wrap;
+  }
+
+  .volunteer-topbar h1 {
+    font-size: 1.4rem;
+  }
+}
+/* ===== DELIVERY PAGE LAYOUT FIX ===== */
+
+.volunteer-dashboard input {
+  width: 100%;
+  padding: 10px;
+  margin: 8px 0 15px;
+  border-radius: 10px;
+  border: none;
+  outline: none;
+  background: #0f172a;
+  color: white;
+  border: 1px solid #334155;
+}
+
+.volunteer-dashboard label {
+  font-size: 0.85rem;
+  color: #94a3b8;
+}
+
+/* responsive fix */
+@media (max-width: 900px) {
+  .volunteer-main div[style] {
+    grid-template-columns: 1fr !important;
+  }
+}

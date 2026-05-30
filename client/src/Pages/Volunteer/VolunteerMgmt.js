@@ -203,88 +203,86 @@ const updateDeliveryJob = async (e) => {
 };
 
 return (
-  <div><h2 id="page-title">Volunteer Job Management</h2>
-    <div className="home ">
-      
-        <div className="workouts">
-        <h3>Accepted Volunteer Jobs</h3>
-          {volunteerJobs && volunteerJobs.map(volunteerJob => (
-            <div className="workout-details" key={volunteerJob._id}>
-                <h4>{volunteerJob.requestTitle}</h4>
-                <p><strong>Organization Name : </strong>{volunteerJob.orgName}</p>
-                <p><strong>Organization Telephone No. : </strong>{volunteerJob.orgTelephone}</p>
-                <p><strong>Organization Location : </strong>{volunteerJob.orgLocation}</p>
-                <p><strong>Due Date : </strong>{volunteerJob.dueDate}</p>
-                
-                <p><strong>Donor Name : </strong>{volunteerJob.donorName}</p>
-                <p><strong>Donor Telephone No. : </strong>{volunteerJob.donorTelephone}</p>
-                <p><strong>Donor Location : </strong>{volunteerJob.donorLocation}</p>
-                <p><strong>Delivery Size : </strong>{volunteerJob.donationSize}</p>
-                <p><strong>Extra Details : </strong>{volunteerJob.donorOtherDetails}</p>
-                <hr/>
-                <p><strong>Volunteer Name : </strong>{volunteerJob.volunteerName}</p>
-                <p><strong>Volunteer NIC : </strong>{volunteerJob.NIC}</p>
-                <p><strong>Volunteer Vehicle No. : </strong>{volunteerJob.vehicleNo}</p>
-                <p><strong>Volunteer Telephone No. : </strong>{volunteerJob.volunteerTelephoneNo}</p>
+  <div className="volunteer-mgmt">
 
+    <h2>Volunteer Job Management</h2>
 
-                <span>
-                    <div><button onClick={() =>toggleDeclineDelivery(volunteerJob)}>Decline Delivery</button></div>
-                    <div><button onClick={() =>toggleUpdateDelivery(volunteerJob)}>Edit Delivery</button></div>
-                    {/* onClick={() =>toggleAcceptDelivery(deliveryRequest)} */}
-                </span>
+    <div className="vm-container">
+
+      {/* LEFT SIDE - JOBS */}
+      <div className="vm-jobs">
+
+        {volunteerJobs && volunteerJobs.map(volunteerJob => (
+          <div className="vm-card" key={volunteerJob._id}>
+
+            <h4>{volunteerJob.requestTitle}</h4>
+
+            <p><strong>Org:</strong> {volunteerJob.orgName}</p>
+            <p><strong>Phone:</strong> {volunteerJob.orgTelephone}</p>
+            <p><strong>Location:</strong> {volunteerJob.orgLocation}</p>
+
+            <p><strong>Donor:</strong> {volunteerJob.donorName}</p>
+
+            <div>
+              <button onClick={() => toggleDeclineDelivery(volunteerJob)}>
+                Decline
+              </button>
+
+              <button onClick={() => toggleUpdateDelivery(volunteerJob)}>
+                Edit
+              </button>
             </div>
-          ))}
-        
-        </div>
 
-          <form className="create" onSubmit={updateDeliveryJob}> 
-            <h3>Edit a Delivery Job</h3>
-            <h4>Request Title : {updateDelivery.requestTitle} </h4>
-          
+          </div>
+        ))}
 
-            <label>Volunter Name:</label>
-            <input 
-              type="text" 
-              name="volunteerName"
-              onChange={handleUpdateFieldChange}
-              value={updateDelivery.volunteerName}
-              required
-            />
+      </div>
 
-            <label>NIC No:</label>
-            <input 
-              type="text" 
-              name="NIC"
-              onChange={handleUpdateFieldChange}
-              value={updateDelivery.NIC}
-              required
-            />
+      {/* RIGHT SIDE - FORM */}
+      <form className="vm-form" onSubmit={updateDeliveryJob}>
 
-            <label>Vehicle No:</label>
-            <input 
-              type="text" 
-              name="vehicleNo"
-              onChange={handleUpdateFieldChange}
-              value={updateDelivery.vehicleNo}
-              required
-            />
+        <h3>Edit Delivery Job</h3>
 
-            <label>Telephone No:</label>
-            <input 
-              type="number" 
-              name="volunteerTelephoneNo"
-              onChange={handleUpdateFieldChange}
-              value={updateDelivery.volunteerTelephoneNo}
-              required
-            />
+        <input
+          type="text"
+          name="volunteerName"
+          placeholder="Volunteer Name"
+          value={updateDelivery.volunteerName}
+          onChange={handleUpdateFieldChange}
+        />
 
-      <button>Update Delivery Job</button>
-    </form>
-        
+        <input
+          type="text"
+          name="NIC"
+          placeholder="NIC"
+          value={updateDelivery.NIC}
+          onChange={handleUpdateFieldChange}
+        />
+
+        <input
+          type="text"
+          name="vehicleNo"
+          placeholder="Vehicle No"
+          value={updateDelivery.vehicleNo}
+          onChange={handleUpdateFieldChange}
+        />
+
+        <input
+          type="number"
+          name="volunteerTelephoneNo"
+          placeholder="Phone"
+          value={updateDelivery.volunteerTelephoneNo}
+          onChange={handleUpdateFieldChange}
+        />
+
+        <button type="submit">Update Job</button>
+
+      </form>
+
     </div>
-    </div>
-        )
+
+  </div>
+);
 
 
 }

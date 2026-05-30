@@ -172,80 +172,116 @@ const createDeliveryJob = async (e) => {
 }
 
   return (
-    <div>
-      <h2 id="page-title">Volunteer Job Acceptance</h2>
-    <div className="home">
-        <div className="workouts">
-        <h3>Volunteer Requests</h3>
+  <div className="volunteer-dashboard">
+
+    {/* Sidebar (reuse same style system) */}
+    <aside className="volunteer-sidebar">
+      <div className="volunteer-logo">Food Pals</div>
+
+      <nav className="volunteer-menu">
+        <a href="/volunteer-home">Dashboard</a>
+        <a href="/volunteer-delivery-accept">Deliveries</a>
+        <a href="/volunteer-mgmt">Profile</a>
+      </nav>
+    </aside>
+
+    {/* Main content */}
+    <main className="volunteer-main">
+
+      {/* Top bar */}
+      <div className="volunteer-topbar">
+        <h1>Available Deliveries</h1>
+        <div className="volunteer-user">Accept & Manage Jobs</div>
+      </div>
+
+      {/* Layout split: list + form */}
+      <div style={{ display: "grid", gridTemplateColumns: "2fr 1fr", gap: "20px" }}>
+
+        {/* LEFT: Delivery list */}
+        <div className="volunteer-grid">
+
           {deliveryRequests && deliveryRequests.map(deliveryRequest => (
-            <div className="workout-details" key={deliveryRequest._id}>
-                <h4>{deliveryRequest.requestTitle}</h4>
-                <p><strong>Organization Name : </strong>{deliveryRequest.orgName}</p>
-                <p><strong>Organization Telephone No. : </strong>{deliveryRequest.orgTelephone}</p>
-                <p><strong>Organization Location : </strong>{deliveryRequest.orgLocation}</p>
-                <p><strong>Due Date : </strong>{deliveryRequest.dueDate}</p>
-                <p><strong>Donor Name : </strong>{deliveryRequest.donorName}</p>
-                <p><strong>Donor Telephone No. : </strong>{deliveryRequest.donorTelephone}</p>
-                <p><strong>Donor Location : </strong>{deliveryRequest.donorLocation}</p>
-                <p><strong>Delivery Size : </strong>{deliveryRequest.donationSize}</p>
-                <p><strong>Extra Details : </strong>{deliveryRequest.donorOtherDetails}</p>
-                <span>
-                    {/*<div><button onClick={() =>deleteWorkout(workout._id)}>Delete</button></div>*/}
-                    <div><button onClick={() =>toggleAcceptDelivery(deliveryRequest)}>Accept Delivery</button></div>
-                    {/* onClick={() =>toggleAcceptDelivery(deliveryRequest)} */}
-                </span>
+            <div className="volunteer-card" key={deliveryRequest._id}>
+
+              <h3>{deliveryRequest.requestTitle}</h3>
+
+              <p><strong>Org:</strong> {deliveryRequest.orgName}</p>
+              <p><strong>Phone:</strong> {deliveryRequest.orgTelephone}</p>
+              <p><strong>Location:</strong> {deliveryRequest.orgLocation}</p>
+              <p><strong>Due:</strong> {deliveryRequest.dueDate}</p>
+
+              <p><strong>Donor:</strong> {deliveryRequest.donorName}</p>
+              <p><strong>Donation:</strong> {deliveryRequest.donationSize}</p>
+
+              <div className="volunteer-actions">
+                <button
+                  className="volunteer-btn accept"
+                  onClick={() => toggleAcceptDelivery(deliveryRequest)}
+                >
+                  Accept
+                </button>
+              </div>
+
             </div>
           ))}
-        
+
         </div>
 
-          <form className="create" onSubmit={createDeliveryJob}> 
-            <h3>Accept a Volunteer Request</h3>
-            <h4>Request Title : {deliveryAccept.requestTitle} </h4>
-          
+        {/* RIGHT: FORM */}
+        <form className="volunteer-card" onSubmit={createDeliveryJob}>
 
-            <label>Volunter Name:</label>
-            <input 
-              type="text" 
-              name="volunteerName"
-              onChange={handleAddFieldChange}
-              value={deliveryAccept.volunteerName}
-              required
-            />
+          <h3>Accept Delivery</h3>
+          <p style={{ color: "#94a3b8" }}>
+            {deliveryAccept.requestTitle}
+          </p>
 
-            <label>NIC No:</label>
-            <input 
-              type="text" 
-              name="NIC"
-              onChange={handleAddFieldChange}
-              value={deliveryAccept.NIC}
-              required
-            />
+          <label>Volunteer Name</label>
+          <input
+            type="text"
+            name="volunteerName"
+            onChange={handleAddFieldChange}
+            value={deliveryAccept.volunteerName}
+            required
+          />
 
-            <label>Vehicle No:</label>
-            <input 
-              type="text" 
-              name="vehicleNo"
-              onChange={handleAddFieldChange}
-              value={deliveryAccept.vehicleNo}
-              required
-            />
+          <label>NIC</label>
+          <input
+            type="text"
+            name="NIC"
+            onChange={handleAddFieldChange}
+            value={deliveryAccept.NIC}
+            required
+          />
 
-            <label>Telephone No:</label>
-            <input 
-              type="number" 
-              name="volunteerTelephoneNo"
-              onChange={handleAddFieldChange}
-              value={deliveryAccept.volunteerTelephoneNo}
-              required
-            />
+          <label>Vehicle No</label>
+          <input
+            type="text"
+            name="vehicleNo"
+            onChange={handleAddFieldChange}
+            value={deliveryAccept.vehicleNo}
+            required
+          />
 
-      <button>Add Workout</button>
-    </form>
-        
-    </div>
-    </div>
-        )
+          <label>Telephone</label>
+          <input
+            type="number"
+            name="volunteerTelephoneNo"
+            onChange={handleAddFieldChange}
+            value={deliveryAccept.volunteerTelephoneNo}
+            required
+          />
+
+          <button className="volunteer-btn accept" style={{ width: "100%" }}>
+            Confirm Delivery
+          </button>
+
+        </form>
+
+      </div>
+
+    </main>
+  </div>
+);
 
 }
 

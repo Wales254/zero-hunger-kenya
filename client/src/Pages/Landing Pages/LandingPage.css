@@ -1,65 +1,76 @@
-/* Main Page */
+/* =========================================
+   LANDING PAGE
+========================================= */
+
+/* =========================
+   FOOD PALS DARK LANDING
+========================= */
+
 .landing-page {
   min-height: 100vh;
-  background: linear-gradient(to right, #0f172a, #1e293b);
-  color: white;
-  font-family: Arial, Helvetica, sans-serif;
+  background: radial-gradient(circle at top, #0b1220, #050814 60%);
+  color: #f8fafc;
+  font-family: "Poppins", sans-serif;
+  display: flex;
+  flex-direction: column;
 }
 
-/* Hero Section */
+/* HERO */
 .hero {
+  flex: 1;
   display: flex;
-  justify-content: center;
   align-items: center;
+  justify-content: center;
   text-align: center;
-
-  min-height: 85vh;
-  padding: 40px 20px;
+  padding: 80px 20px;
 }
 
 .hero-content {
-  max-width: 800px;
+  max-width: 850px;
 }
 
 .hero-content h1 {
-  font-size: 4rem;
-  margin-bottom: 20px;
+  font-size: 3.8rem;
+  font-weight: 800;
   line-height: 1.2;
+  color: #ffffff;
 }
 
 .hero-content h1 span {
   color: #22c55e;
+  text-shadow: 0 0 20px rgba(34, 197, 94, 0.4);
 }
 
 .hero-content p {
+  margin-top: 20px;
   font-size: 1.2rem;
   color: #cbd5e1;
   line-height: 1.8;
-  margin-bottom: 35px;
 }
 
-/* Buttons */
+/* BUTTONS */
 .hero-buttons {
+  margin-top: 35px;
   display: flex;
+  gap: 15px;
   justify-content: center;
-  gap: 20px;
   flex-wrap: wrap;
 }
 
 .primary-btn,
 .secondary-btn {
-  padding: 15px 30px;
-  border: none;
+  padding: 14px 28px;
   border-radius: 10px;
   font-size: 1rem;
+  font-weight: 600;
   cursor: pointer;
   transition: 0.3s ease;
+  border: none;
 }
 
 .primary-btn {
   background: #22c55e;
-  color: white;
-  font-weight: bold;
+  color: #fff;
 }
 
 .primary-btn:hover {
@@ -69,54 +80,314 @@
 
 .secondary-btn {
   background: transparent;
-  border: 2px solid white;
+  border: 1px solid #94a3b8;
+  color: #e2e8f0;
+}
+
+.secondary-btn:hover {
+  background: #e2e8f0;
+  color: #0f172a;
+}
+
+/* FEATURES */
+.features {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+  gap: 25px;
+  padding: 60px 10%;
+  background: rgba(255, 255, 255, 0.02);
+  backdrop-filter: blur(10px);
+}
+
+.feature-card {
+  background: rgba(255, 255, 255, 0.05);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  padding: 25px;
+  border-radius: 14px;
+  transition: 0.3s ease;
+}
+
+.feature-card:hover {
+  transform: translateY(-6px);
+  background: rgba(255, 255, 255, 0.08);
+}
+
+.feature-card h2 {
+  color: #22c55e;
+  margin-bottom: 10px;
+}
+
+.feature-card p {
+  color: #cbd5e1;
+  line-height: 1.6;
+}
+
+/* =========================================
+   HERO
+========================================= */
+
+.hero {
+  min-height: 90vh;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  text-align: center;
+
+  padding: 80px 20px;
+}
+
+.hero-content {
+  max-width: 900px;
+  animation: fadeUp 1s ease;
+}
+
+.hero-content h1 {
+  font-size: 4.5rem;
+  font-weight: 800;
+  line-height: 1.1;
+  margin-bottom: 25px;
+}
+
+.hero-content span {
+  color: #22c55e;
+}
+
+.hero-content p {
+  font-size: 1.25rem;
+  color: #cbd5e1;
+  line-height: 1.8;
+  margin-bottom: 40px;
+}
+
+/* =========================================
+   HERO BUTTONS
+========================================= */
+
+.hero-buttons {
+  display: flex;
+  justify-content: center;
+  gap: 20px;
+  flex-wrap: wrap;
+}
+
+.primary-btn,
+.secondary-btn {
+  padding: 16px 34px;
+  border-radius: 12px;
+  font-size: 1rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: 0.3s ease;
+}
+
+.primary-btn {
+  background: #22c55e;
   color: white;
+  border: none;
+}
+
+.primary-btn:hover {
+  background: #16a34a;
+  transform: translateY(-4px);
+}
+
+.secondary-btn {
+  background: transparent;
+  color: white;
+  border: 2px solid rgba(255,255,255,0.3);
 }
 
 .secondary-btn:hover {
   background: white;
   color: #0f172a;
+  transform: translateY(-4px);
 }
 
-/* Features */
-.features {
+/* =========================================
+   STATS
+========================================= */
+
+.stats {
+  padding: 80px 10%;
+
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-
+  grid-template-columns: repeat(auto-fit,minmax(220px,1fr));
   gap: 25px;
-  padding: 50px 10%;
 }
 
-.feature-card {
+.stat-card {
   background: rgba(255,255,255,0.08);
-  padding: 30px;
-  border-radius: 16px;
 
-  backdrop-filter: blur(10px);
+  backdrop-filter: blur(12px);
+
+  border: 1px solid rgba(255,255,255,0.1);
+
+  padding: 30px;
+  border-radius: 20px;
+
+  text-align: center;
 
   transition: 0.3s ease;
 }
 
-.feature-card:hover {
+.stat-card:hover {
   transform: translateY(-8px);
+}
+
+.stat-icon {
+  font-size: 2.5rem;
+  color: #22c55e;
+  margin-bottom: 15px;
+}
+
+.stat-card h2 {
+  font-size: 2rem;
+  margin-bottom: 10px;
+}
+
+.stat-card p {
+  color: #cbd5e1;
+}
+
+/* =========================================
+   FEATURES
+========================================= */
+
+.features {
+  padding: 80px 10%;
+
+  display: grid;
+  grid-template-columns: repeat(auto-fit,minmax(280px,1fr));
+  gap: 30px;
+}
+
+.feature-card {
+  background: rgba(255,255,255,0.08);
+
+  backdrop-filter: blur(15px);
+
+  border: 1px solid rgba(255,255,255,0.1);
+
+  border-radius: 20px;
+
+  padding: 35px;
+
+  transition: all 0.3s ease;
+}
+
+.feature-card:hover {
+  transform: translateY(-10px);
   background: rgba(255,255,255,0.12);
+}
+
+.feature-icon {
+  font-size: 2.8rem;
+  color: #22c55e;
+  margin-bottom: 20px;
 }
 
 .feature-card h2 {
   margin-bottom: 15px;
-  color: #22c55e;
+  color: white;
 }
 
 .feature-card p {
-  color: #e2e8f0;
-  line-height: 1.6;
+  color: #cbd5e1;
+  line-height: 1.8;
 }
 
-/* Responsive */
-@media (max-width: 768px) {
+/* =========================================
+   IMPACT
+========================================= */
+
+.impact {
+  text-align: center;
+  padding: 100px 10%;
+}
+
+.impact h2 {
+  font-size: 3rem;
+  margin-bottom: 25px;
+}
+
+.impact p {
+  max-width: 900px;
+  margin: auto;
+
+  color: #cbd5e1;
+  font-size: 1.1rem;
+  line-height: 2;
+}
+
+/* =========================================
+   CTA
+========================================= */
+
+.cta {
+  text-align: center;
+
+  padding: 100px 20px;
+}
+
+.cta h2 {
+  font-size: 3rem;
+  margin-bottom: 20px;
+}
+
+.cta p {
+  color: #cbd5e1;
+  margin-bottom: 35px;
+  font-size: 1.1rem;
+}
+
+/* =========================================
+   ANIMATIONS
+========================================= */
+
+@keyframes fadeUp {
+  from {
+    opacity: 0;
+    transform: translateY(60px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* =========================================
+   TABLET
+========================================= */
+
+@media screen and (max-width: 1024px) {
 
   .hero-content h1 {
+    font-size: 3.5rem;
+  }
+
+  .impact h2,
+  .cta h2 {
     font-size: 2.5rem;
+  }
+
+}
+
+/* =========================================
+   MOBILE
+========================================= */
+
+@media screen and (max-width: 768px) {
+
+  .hero {
+    min-height: auto;
+    padding: 100px 20px;
+  }
+
+  .hero-content h1 {
+    font-size: 2.7rem;
   }
 
   .hero-content p {
@@ -126,6 +397,37 @@
   .hero-buttons {
     flex-direction: column;
     align-items: center;
+  }
+
+  .hero-buttons button {
+    width: 220px;
+  }
+
+  .impact h2,
+  .cta h2 {
+    font-size: 2rem;
+  }
+
+}
+
+/* =========================================
+   SMALL PHONES
+========================================= */
+
+@media screen and (max-width: 480px) {
+
+  .hero-content h1 {
+    font-size: 2.2rem;
+  }
+
+  .stats,
+  .features {
+    padding: 50px 20px;
+  }
+
+  .impact,
+  .cta {
+    padding: 70px 20px;
   }
 
 }

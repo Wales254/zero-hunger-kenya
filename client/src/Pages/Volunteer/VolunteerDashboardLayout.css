@@ -1,0 +1,120 @@
+/* =========================
+   BASE LAYOUT
+========================= */
+.vd-layout {
+  display: flex;
+  min-height: 100vh;
+  font-family: "Poppins", sans-serif;
+  background: #f8fafc;
+  transition: 0.3s;
+}
+
+/* DARK MODE */
+.vd-layout.dark {
+  background: #0f172a;
+  color: white;
+}
+
+/* =========================
+   SIDEBAR
+========================= */
+.sidebar {
+  width: 250px;
+  background: #0f172a;
+  color: white;
+  padding: 20px;
+  transition: 0.3s;
+  display: flex;
+  flex-direction: column;
+}
+
+.sidebar.collapsed {
+  width: 70px;
+}
+
+.sidebar .logo {
+  margin-bottom: 40px;
+}
+
+.sidebar nav {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+}
+
+.sidebar nav a {
+  color: white;
+  text-decoration: none;
+  padding: 10px;
+  border-radius: 8px;
+  transition: 0.3s;
+}
+
+.sidebar nav a:hover {
+  background: #22c55e;
+}
+
+.toggle-btn {
+  margin-top: auto;
+  background: #22c55e;
+  border: none;
+  padding: 10px;
+  border-radius: 8px;
+  cursor: pointer;
+}
+
+/* =========================
+   MAIN AREA
+========================= */
+.main {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+}
+
+/* TOPBAR */
+.topbar {
+  display: flex;
+  justify-content: space-between;
+  padding: 15px 25px;
+  background: white;
+  box-shadow: 0 4px 10px rgba(0,0,0,0.05);
+}
+
+.vd-layout.dark .topbar {
+  background: #1e293b;
+}
+
+/* RIGHT SIDE */
+.topbar .right {
+  display: flex;
+  align-items: center;
+  gap: 15px;
+}
+
+.icon {
+  font-size: 20px;
+  cursor: pointer;
+}
+
+.profile {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.avatar {
+  width: 35px;
+  height: 35px;
+  background: #22c55e;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: white;
+}
+
+/* CONTENT */
+.content {
+  padding: 25px;
+}
