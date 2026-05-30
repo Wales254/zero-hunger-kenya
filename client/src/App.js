@@ -5,9 +5,9 @@ import Navbar from "./Components/Navbar";
 import Footer from "./Components/Footer";
 
 // Landing Pages
-import LandingPage from "./pages/Landing Pages/LandingPage";
-import Login from "./pages/Landing Pages/LoginPage";
-import Signup from "./pages/Landing Pages/SignUpPage";
+import LandingPage from "./Pages/LandingPages/LandingPage"
+import Login from "./pages/LandingPages/LoginPage";
+import Signup from "./pages/LandingPages/SignUpPage";
 
 // Volunteer Pages
 import VolunteerHome from "./pages/Volunteer/VolunteerHomePage";
