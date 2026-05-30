@@ -24,7 +24,7 @@ The Main Functions are
 
 
 LIVE AT:
-CLIENT:https://zero-hunger-kenya.vercel.app/
+CLIENT:https://zero-hunger-kenya-d97z.vercel.app/
 
 SERVER:COMING SOON!!
 
